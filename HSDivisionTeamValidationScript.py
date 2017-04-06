@@ -53,7 +53,7 @@ cleaned = open('tested_' + name, 'w')
 with open (name, 'r+') as f:
     while (True):
         c = f.readline()
-        if "bitmap:copy-to-pcolors bitmap:import \"parkingLot.jpg\" true\n" not in c and "extensions[bitmap]\n" not in c:
+        if "bitmap" not in c:
             cleaned.write(c)
         if not c:
             break
@@ -67,9 +67,9 @@ bridge.command("setup")
 
 #6 robots
 print "Test for exactly 6 robots: "
-agentCount = bridge.report("count turtles")
-print agentCount
-if agentCount != 6:
+turtleCount = bridge.report("count turtles")
+print "You have " + str(turtleCount) + "."
+if turtleCount != 6:
     genericError("You must have 6 robots.\n\n")
 else:
     ok()
